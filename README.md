@@ -4,7 +4,7 @@ f90wrapped MOM6 remapping core
 To use the remapping interface from Python:
 
 ~~~python
-from . import mom_remapping
+from remapping import mom_remapping
 cs = mom_remapping.Remapping_Cs()
 
 # set the interpolation scheme
@@ -23,5 +23,5 @@ cs.interpolation_scheme = <n>
 # 4 = PQM
 cs.degree = <n>
 
-u1 = mom_remapping.remapping_core_h(h0, u0, h1, cs)
+u1 = mom_remapping.remapping_core_h(cs, h0, u0, h1)
 ~~~

@@ -204,7 +204,7 @@ subroutine f90wrap_remapping_cs_finalise(this)
     deallocate(this_ptr%p)
 end subroutine f90wrap_remapping_cs_finalise
 
-subroutine f90wrap_remapping_core_h(h0, u0, h1, u1, cs, n0, n1, n2)
+subroutine f90wrap_remapping_core_h(cs, h0, u0, h1, u1, n0, n1, n2)
     use mom_remapping, only: remapping_core_h, remapping_cs
     implicit none
     
@@ -224,7 +224,7 @@ subroutine f90wrap_remapping_core_h(h0, u0, h1, u1, cs, n0, n1, n2)
     integer :: n2
     !f2py intent(hide), depend(h1) :: n2 = shape(h1,0)
     cs_ptr = transfer(cs, cs_ptr)
-    call remapping_core_h(n0=n0, h0=h0, u0=u0, n1=n2, h1=h1, u1=u1, CS=cs_ptr%p)
+    call remapping_core_h(CS=cs_ptr%p, n0=n0, h0=h0, u0=u0, n1=n2, h1=h1, u1=u1)
 end subroutine f90wrap_remapping_core_h
 
 subroutine f90wrap_mom_remapping__get__remapping_pcm(f90wrap_remapping_pcm)

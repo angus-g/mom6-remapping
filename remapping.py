@@ -1,4 +1,4 @@
-from . import _remapping
+import _remapping
 import f90wrap.runtime
 import logging
 
@@ -172,7 +172,7 @@ class Mom_Remapping(f90wrap.runtime.FortranModule):
         _dt_array_initialisers = []
         
     @staticmethod
-    def remapping_core_h(h0, u0, h1, cs):
+    def remapping_core_h(cs, h0, u0, h1):
         """
         u1 = remapping_core_h(h0, u0, h1, cs)
         
@@ -188,7 +188,7 @@ class Mom_Remapping(f90wrap.runtime.FortranModule):
         cs : Remapping_Cs
         
         """
-        return _remapping.f90wrap_remapping_core_h(h0=h0, u0=u0, h1=h1, cs=cs._handle)
+        return _remapping.f90wrap_remapping_core_h(cs=cs._handle, h0=h0, u0=u0, h1=h1)
     
     @property
     def remapping_pcm(self):
